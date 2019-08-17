@@ -1,7 +1,8 @@
-import { GET_ALL_PRODUCTS, SHOPPING_CART } from '../action/types.action';
+import { GET_ALL_PRODUCTS, GET_SINGLE_PRODUCT } from '../action/types.action';
 
 const initialState = {
-    products: {}
+    products: {},
+    selectedProduct: {}
 }
 
 export default function (state=initialState, action) {
@@ -10,6 +11,12 @@ export default function (state=initialState, action) {
             return {
                 ...state,
                 products: action.payload
+            }
+        
+        case GET_SINGLE_PRODUCT: 
+            return {
+                ...state,
+                selectedProduct:  action.payload
             }
 
         default:

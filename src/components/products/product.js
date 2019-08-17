@@ -1,20 +1,23 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
-
+import {Link} from 'react-router-dom';
 import { addToCart } from '../../store/action/cart.action';
+import { singleProductDetails } from '../../store/action/product.action';
 
-class Product extends Component {
+class Products extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            orderCount: 1
+            orderCount: 1, 
+            isInCart: false
          }
     }
 
 
     addToCarthandler(e, product){
+        // console.log(product)
         e.preventDefault();
-        this.productCount(product.id)
+        
         const selectedProduct = {
             ...product,
             count: this.state.orderCount
@@ -22,43 +25,42 @@ class Product extends Component {
         this.props.addToCart(selectedProduct)
     }
 
-    productCount(id){
-        const { cart } = this.props.cart; 
-
-        if(cart.length > 0){
-            let ItemRepeat = cart.filter(item => {
-                if(item.id === id){ 
-                    this.setState({
-                        orderCount: this.state.orderCount += 1
-                    })
-                } else{
-                    this.setState({
-                        orderCount: 1
-                    })
-                }
-            })
-            return ItemRepeat
-        }
+ 
+ 
+    getProducthandler(selectedProduct){
+        this.props.singleProductDetails(selectedProduct);
     }
+
+  
 
 
     render() { 
         const { products } = this.props;
 
-        // console.log(this.props)
-        console.log(this.state.orderCount)
+        console.log(this.props.cart.cart)
+        // console.log(this.state.orderCount)
 
-        if(products.length){
+        if(products.length > 0){
             return products.map(product => (
                 <div key={product.id} className="single__product">
                     <div className="product__image" style={{background: `url(${product.image})`}}></div>
                         <div className="product__cart">
                             <a href="#" className="add__cart" onClick={e => this.addToCarthandler(e, product)}>Add To Cart</a>
-                            <a href="#" className="details">Details</a>
+                            <Link 
+                                to={`/product/${product.slug}`}  
+                                className="details"
+                                onClick={() => this.getProducthandler(product)}>
+                                Details
+                            </Link>
                         </div>
 
                         <div className="product__meta">
-                            <a href="#">{product.title}</a>
+                        <Link 
+                            to={`/product/${product.slug}`}
+                            onClick={() => this.getProducthandler(product)}
+                        > 
+                            {product.title}
+                        </Link>
                             <span className="price">$ {product.price}</span>
                         </div>
                 </div>
@@ -74,11 +76,12 @@ class Product extends Component {
 }
 
 
-const mapStateToProps = state => {
+const mapStateToProps = state => { 
     return {
-        cart: state.cart
+        cart: state.cart,
+        // selectedProduct
     }
 }
 
  
-export default connect(mapStateToProps, {addToCart})(Product);
+export default connect(mapStateToProps, {addToCart, singleProductDetails})(Products);

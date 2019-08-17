@@ -24,7 +24,7 @@ $secColor: #F99323;
     }
 
     .cart__icon {
-        color: $colorWhite;
+        color: $colorWhite; 
         
         span {
             color: $secColor !important;
@@ -37,6 +37,18 @@ $secColor: #F99323;
     position: relative;
     flex-basis: 50%;
     text-align: right;
+
+    .cheout__btn{
+        display: inline-block;
+        color: #fff;
+        font-size: 42%;
+        text-transform: uppercase;
+        background: #fd8400;
+        padding: 12px 25px;
+        font-weight: 700;
+        margin-left: 10px;
+        transition: .3s;
+    }
 }
  
 
@@ -58,13 +70,30 @@ $secColor: #F99323;
     
 
     a {
+        position: relative;
         margin: 10px 0;
         background: rgba(222, 222, 222, 0.25);
         font-size: 70%;
+        font-size: 16px;
 
         img {
             height: 70px;
             margin-right: 10px;
+        }
+
+        span {
+            color: #ff3b3b;
+            position: absolute;
+            right: -12px;
+            top: -19px;
+            z-index: 1;
+            opacity: .6;
+            font-size: 20px;
+
+
+            &:hover{
+                opacity: 1;
+            }
         }
 
         &:hover{

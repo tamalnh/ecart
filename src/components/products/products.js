@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';
+import { getAllProducts } from '../../store/action/product.action';
 
 import Product from './product';
 
@@ -10,6 +11,13 @@ class Products extends Component {
         super(props);
         this.state = {  }
     }
+
+
+    componentDidMount(){
+        this.props.getAllProducts()
+    }
+
+
     render() { 
         const { products } = this.props.products  
         return ( 
@@ -26,4 +34,4 @@ const mapStateToProps = state => {
     }
 }
  
-export default connect(mapStateToProps)(Products);
+export default connect(mapStateToProps, {getAllProducts})(Products);

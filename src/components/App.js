@@ -1,40 +1,26 @@
 import React, {Component} from 'react';  
-// import axios from 'axios';
-import { connect } from 'react-redux';
-import { getAllProducts } from '../store/action/product.action'
-
-import Header from './header/header';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'; 
+import Layout from './layout';
 import Products from './products/products'
+import SingleProduct from './pages/singleProduct'
+import Checkout from './pages/checkout'
 
 import './App.scss';
 
 
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
-
-  componentDidMount(){ 
-    this.props.getAllProducts()
-  // axios.get(`https://depot.mikado-themes.com/wp-json/wp/v2/product`)
-  // .then(res => {
-  //   console.log(res)
-  // })
-  // .then(data => {
-  //   console.log(data)
-  // })
-  }
-
-  render() { 
-    return ( 
-      <div id="app">
-          <Header />
-          <Products />
-      </div>
-     );
-  }
+const App = () => { 
+  return ( 
+      <BrowserRouter>
+          <Switch>
+            <Layout>
+              <Route exact={true} path="/" component={Products}/>
+              <Route  path="/product/:slug" component={SingleProduct}/>
+              <Route  path="/checkout" component={Checkout}/>
+            </Layout>
+          </Switch>
+      </BrowserRouter>
+   );
 }
  
-export default connect(null, {getAllProducts})(App);
+export default App;
