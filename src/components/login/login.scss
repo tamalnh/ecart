@@ -1,0 +1,27 @@
+
+
+.__login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .95;
+    color: #ff4d5e;
+    z-index: 111;
+}
+
+.__login button {
+    background: #ffbf00;
+    border: none;
+    padding: 15px 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 25px;
+}

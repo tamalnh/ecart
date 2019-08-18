@@ -1,0 +1,76 @@
+.chekout__wrapper {
+    position: relative;
+    display: flex;
+}
+
+/*form*/
+
+ 
+
+.checkout__form {
+    flex-basis: 50%;
+    padding: 15px 15px 15px 5px
+}
+
+.order__details {
+    flex-basis: 50%;
+    padding: 15px
+}
+
+.form__inline input, .form__inline textarea {flex: 50%;border: none;background: #f0f0f0;padding: 10px 15px;margin: 10px;}
+
+.form__inline {
+    display: flex;
+}
+
+/*order details*/
+
+.__table tbody img {
+    height: 60px;
+}
+td.thumbnail {
+    display: flex;
+    align-items: center;
+}
+
+.__table thead th {
+    padding: 10px 0 10px;
+    font-size: 13px;
+}
+
+.__table thead {
+    background: #f9f9f9;
+    width: 100%;
+}
+
+.__table table {
+    width: 100%;
+}
+
+.table__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: #f9bb00;
+    padding: 10px;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+ 
+
+.table__footer div:first-child {
+    margin-bottom: 15px;
+}
+
+.table__footer span {color: #333; font-weight: 700; margin-left: 15px}
+
+.table__footer button {
+    background: #333;
+    border: none;
+    color: #fff;
+    padding: 10px 60px;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
