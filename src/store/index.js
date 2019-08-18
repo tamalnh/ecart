@@ -11,9 +11,10 @@ const thunkMiddleware = [thunk];
 const store = createStore(
     reducer,
     initialState,
-    compose(applyMiddleware(...thunkMiddleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+    applyMiddleware(...thunkMiddleware)
+    // compose(applyMiddleware(...thunkMiddleware),
+    //     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // )
 )
 
 export default store;

@@ -3,3 +3,4 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
 export const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT';
 export const UPDATE_CART = 'UPDATE_CART';
+export const CLEAR_CART_LIST = 'CLEAR_CART_LIST';

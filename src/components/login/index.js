@@ -1,14 +1,13 @@
 import React from 'react';
 
-import './login.scss' 
+import './login.scss'
 
 const Login = (props) => {
 
-    const clickHandler = () =>{
-        props.handleClick() 
+    const clickHandler = () => {
+        props.handleClick()
     }
-    console.log(props)
-    return ( 
+    return (
         <div className="__login">
             <div>
                 <button type="submit" onClick={() => clickHandler()}>CLick to login</button>
@@ -16,7 +15,7 @@ const Login = (props) => {
                 <p>this app use all the dummy data. Please click here to login</p>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default Login;

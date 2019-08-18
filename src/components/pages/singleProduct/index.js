@@ -1,57 +1,55 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import { addToCart, updateCart } from '../../store/action/cart.action'; 
+import { addToCart, updateCart } from '../../../store/action/cart.action';
 
 import './singleProduct.scss'
 
 class SingleProduct extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             count: 1,
             isInCart: false,
             buttonText: 'Add To Cart'
-         }
-    }
-
-
-    componentDidMount(){ 
-
-        const {cart} = this.props.cart;
-        const { selectedItem } = this.props
-        // console.log()
-        if(cart.length > 0){
-            cart.filter(product => { 
-                const isProductExists = product.id === selectedItem.id;
-
-                if(isProductExists){ 
-                    this.setState({
-                        count: product.count,
-                        isInCart: true, 
-                    })
-                }
-            }) 
         }
     }
 
-    countHandler(e){
+
+    componentDidMount() {
+
+        const { cart } = this.props.cart;
+        const { selectedItem } = this.props
+        if (cart.length > 0) {
+            cart.filter(product => {
+                const isProductExists = product.id === selectedItem.id;
+
+                if (isProductExists) {
+                    this.setState({
+                        count: product.count,
+                        isInCart: true,
+                    })
+                }
+            })
+        }
+    }
+
+    countHandler(e) {
         this.setState({
             count: e.target.value,
             buttonText: "Update Cart"
         })
 
-        
+
     }
 
 
-    addToCarthandler(e, product){
-        if(!this.state.isInCart){
+    addToCarthandler(e, product) {
+        if (!this.state.isInCart) {
             e.preventDefault();
-            // this.productCount(product.id)
             const selectedProduct = {
                 ...product,
-                count: this.state.count, 
+                count: this.state.count,
             }
             this.props.addToCart(selectedProduct)
 
@@ -59,21 +57,21 @@ class SingleProduct extends Component {
                 isInCart: true,
                 buttonText: "Add To Cart"
             })
-        }else{
+        } else {
             const selectedProduct = {
                 ...product,
-                count: this.state.count, 
+                count: this.state.count,
             }
-            this.props.updateCart(selectedProduct); 
+            this.props.updateCart(selectedProduct);
         }
     }
 
 
 
 
-    render() {  
+    render() {
         const { selectedItem } = this.props
-        return ( 
+        return (
             <div className="product__details_wrapper">
                 <div className="__product">
                     <div className="product__preview">
@@ -86,32 +84,31 @@ class SingleProduct extends Component {
                         <p>{selectedItem.description}</p>
 
                         <div className="__meta">
-                            <input 
-                                type="number" 
-                                className="cout" 
-                                defaultValue={this.state.count} 
+                            <input
+                                type="number"
+                                className="cout"
+                                defaultValue={this.state.count}
                                 onChange={e => this.countHandler(e)}
                             />
 
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 className="add__cart"
-                                onClick={e => this.addToCarthandler(e, selectedItem)}    
-                            >{this.state.buttonText}</button> 
-                        </div>  
+                                onClick={e => this.addToCarthandler(e, selectedItem)}
+                            >{this.state.buttonText}</button>
+                        </div>
                     </div>
                 </div>
             </div>
-         );
+        );
     }
 }
 
-const mapStateToProps = state => {
-    // console.log(state)
+const mapStateToProps = state => { 
     return {
         cart: state.cart,
         selectedItem: state.products.selectedProduct
     }
 }
- 
-export default connect(mapStateToProps, {addToCart, updateCart})(SingleProduct);
+
+export default connect(mapStateToProps, { addToCart, updateCart })(SingleProduct);

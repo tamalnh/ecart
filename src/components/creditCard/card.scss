@@ -1,0 +1,48 @@
+.credit__card {
+    background: #333;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card__box {
+        padding: 100px 50px;
+        background: #020202;
+        box-shadow: 0 0 36px #171a25;
+        border-radius: 9px;
+    
+        %input__button {
+            border: none;
+            padding: 10px 25px;
+            border-radius: 0;
+          }
+    
+        input {
+            @extend %input__button;
+            background: #2f3548;
+            color: #fff;
+        }
+    
+        button {
+            @extend %input__button;
+            background: #141c33;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        p{
+            color:#82004e
+        }
+
+        a{
+           color:  #1e5ebd
+        }
+    }
+}
+
+
+
+ 
